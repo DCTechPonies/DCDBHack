@@ -14,6 +14,10 @@ We are a team destined for greatness. Or pizza. One of the two.
 2. [D&B iPhone app](https://itunes.apple.com/us/app/credit-reporter-by-dun-bradstreet/id661843054)
 3. [D&B Dev Docs](http://developer.dnb.com/docs)
 4. [Hackathon link](https://dnbdctech.eventbrite.com/)
+5. [D&B Products and Features](http://developer.dnb.com/docs/2.0/products-and-features)
+	+ Products and Features lists all available data types from D&B
+6. [D&B Data Categories](http://developer.dnb.com/docs/2.0/data-categories)
+	+ Data Categories lists products grouped according to their data catagory/layer
 
 
 ###Some thoughts/App Ideas
