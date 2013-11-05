@@ -21,6 +21,9 @@ We are a team destined for greatness. Or pizza. One of the two.
 
 
 ###Some thoughts/App Ideas
++We will be making something that allows the user to find similar companies to a company whose DUNS number they enter. 
+They will be able to find different companies based on different sets of metrics.(Financial, Social, Etc.) based on different metrics.
+
 
 + Using Glass for the hackathon
 	+ Would you guys like to use Glass in the hackathon as part of the App? They have an Android/iOS app, but not a Glass one...
