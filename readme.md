@@ -35,12 +35,12 @@ They will be able to find different companies based on different sets of metrics
 ```javascript
 var authToken;
 
-var fnAuthenticate - function() {
+var fnAuthenticate = function() {
 	$.ajax({
 		url: "https://maxcvservices.dnb.com/rest/Authentication",
 		type: "POST",
 		date: {
-			"x-dnb-user": "ken.kopcyzk@gmail.com",
+			"x-dnb-user": "ken.kopczyk@gmail.com",
 			"x-dnd-pwd": "sandbox",
 		},
 		success: function(data, textStatus, jqXHR) {
