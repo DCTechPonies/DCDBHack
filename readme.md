@@ -30,7 +30,7 @@ They will be able to find different companies based on different sets of metrics
 
 ###Some code samples
 
-```
+```javascript
 var authToken;
 
 var fnAuthenticate - function() {
