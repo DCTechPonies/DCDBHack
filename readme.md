@@ -1,4 +1,5 @@
 # Go Team Ponies!
+##Check out our site @ ponies.azurewebsites.net/
 We are a team destined for greatness. Or pizza. One of the two.
 
 ### We are:
