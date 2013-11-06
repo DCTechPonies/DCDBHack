@@ -27,3 +27,27 @@ They will be able to find different companies based on different sets of metrics
 
 + Using Glass for the hackathon
 	+ Would you guys like to use Glass in the hackathon as part of the App? They have an Android/iOS app, but not a Glass one...
+
+###Some code samples
+
+```
+var authToken;
+
+var fnAuthenticate - function() {
+	$.ajax({
+		url: "https://maxcvservices.dnb.com/rest/Authentication",
+		type: "POST",
+		date: {
+			"x-dnb-user": "ken.kopcyzk@gmail.com",
+			"x-dnd-pwd": "sandbox",
+		},
+		success: function(data, textStatus, jqXHR) {
+			authToken = data.Authorization;		
+			console.log("SUCCESS!");
+		},
+		error: function(jqXHR, textStatus, errorThrown) {
+			console.log("FAILURE!");
+		}
+	});	
+}
+```
