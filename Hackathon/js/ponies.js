@@ -1,14 +1,14 @@
 $( document ).ready(function() {
 
-    $.when(DnbAuthenticate()).then(
-        function (data, textStatus, jqXHR) {
-            authenticationToken = data.authToken;
-            intitializeApp();
-        },
-        function (jqXHR, textStatus, errorThrown) {
-            $('#content').html("D&B Authentication Failure");
-        }
-    );
+    //$.when(DnbAuthenticate()).then(
+    //    function (data, textStatus, jqXHR) {
+    //        authenticationToken = data.authToken;
+    //        intitializeApp();
+    //    },
+    //    function (jqXHR, textStatus, errorThrown) {
+    //        $('#content').html("D&B Authentication Failure");
+    //    }
+    //);
 });
 
 var authenticationToken = null;
