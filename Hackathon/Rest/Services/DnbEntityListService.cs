@@ -45,7 +45,8 @@ namespace Hackathon.Rest.Services
 	        }
             restRequest.AddHeader("Authorization", request.AuthToken);
             var response = restClient.Execute(restRequest);
-            if (response.StatusCode != System.Net.HttpStatusCode.OK)
+            if (response.StatusCode != System.Net.HttpStatusCode.OK &&
+                (response.StatusCode != System.Net.HttpStatusCode.NotFound))
             {
                 throw new HttpException(500, "D&B Request Failed.");
             }

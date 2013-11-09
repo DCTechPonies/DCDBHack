@@ -69,7 +69,9 @@ function doSearch() {
             authToken: authenticationToken
         },
         success: function (data, textStatus, jqXHR) {
-            searchTable.fnAddData(data.FindCompanyResponse.FindCompanyResponseDetail.FindCandidate);
+            if (data.FindCompanyResponse.FindCompanyResponseDetail) {
+                searchTable.fnAddData(data.FindCompanyResponse.FindCompanyResponseDetail.FindCandidate);
+            }
             $('#searchspinner').hide();
             $('.dunslink').click(dunsLinkClick);
         },
