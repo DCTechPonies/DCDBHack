@@ -132,6 +132,7 @@
     <Compile Include="Rest\Endpoints\DnbEntityListRequest.cs" />
     <Compile Include="Rest\Endpoints\DnbSampleRequest.cs" />
     <Compile Include="Rest\Endpoints\DnbAuthRequest.cs" />
+    <Compile Include="Rest\Services\DnbCompanyService.cs" />
     <Compile Include="Rest\Services\DnbEntityListService.cs" />
     <Compile Include="Rest\Services\DnbSampleService.cs" />
     <Compile Include="Rest\Services\DnbAuthService.cs" />
