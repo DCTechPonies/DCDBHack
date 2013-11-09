@@ -12,3 +12,12 @@
 #loading img {
     content:url(/images/ajax-loader.gif);
 }
+
+#searchbox {
+    display:inline-block; 
+    width:80%;
+}
+
+#searchform {
+    text-align: center;
+}

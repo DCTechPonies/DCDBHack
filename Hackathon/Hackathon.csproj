@@ -118,7 +118,9 @@
     <Content Include="js\jquery.dataTables.js" />
     <Content Include="js\ponies.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\AppHost.cs" />

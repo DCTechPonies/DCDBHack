@@ -19,15 +19,17 @@ namespace Hackathon.Rest.Services
             restRequest.AddHeader("x-dnb-user", user);
             restRequest.AddHeader("x-dnb-pwd", password);
             var response = restClient.Execute(restRequest);
-            if (response.StatusCode != System.Net.HttpStatusCode.OK)
+            string authToken = System.Configuration.ConfigurationManager.AppSettings["token"];
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
-                throw new HttpException(500, "D&B Authentication Failed.");
+                authToken = (string)response.Headers.Single(h => h.Name == "Authorization").Value;
+                //throw new HttpException(500, "D&B Authentication Failed.");
             }
             return new DnbAuthDto()
             {
                 User = (string)response.Headers.Single(h => h.Name == "x-dnb-user").Value,
                 Password = (string)response.Headers.Single(h => h.Name == "x-dnb-pwd").Value,
-                AuthToken = (string)response.Headers.Single(h => h.Name == "Authorization").Value
+                AuthToken = authToken
             };
         }
     }
