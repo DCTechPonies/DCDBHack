@@ -15,9 +15,13 @@
 
 #searchbox {
     display:inline-block; 
-    width:80%;
+    width:75%;
 }
 
 #searchform {
     text-align: center;
+}
+
+#searchspinner {
+    content:url(/images/searchspinner.gif);
 }
