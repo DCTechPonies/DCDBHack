@@ -2,17 +2,6 @@ var authenticationToken = null;
 
 $(document).ready(function () {
 
-<<<<<<< Updated upstream
-    //$.when(DnbAuthenticate()).then(
-    //    function (data, textStatus, jqXHR) {
-    //        authenticationToken = data.authToken;
-    //        intitializeApp();
-    //    },
-    //    function (jqXHR, textStatus, errorThrown) {
-    //        $('#content').html("D&B Authentication Failure");
-    //    }
-    //);
-=======
     $.when(DnbAuthenticate()).then(
         function (data, textStatus, jqXHR) {
             authenticationToken = data.authToken;
@@ -23,7 +12,6 @@ $(document).ready(function () {
             $('#content').html("D&B Authentication Failure");
         }
     );
->>>>>>> Stashed changes
 });
 
 function DnbAuthenticate() {
