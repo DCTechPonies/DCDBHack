@@ -18,31 +18,38 @@ namespace Hackathon.Rest.Services
             //Prod
             request.AuthToken = "AsAFLo/h3hh3qyjaLwzpYv3usddOE6XqGM7sDWV+/mbJeduCr1TnkX0QA/x/MEAE8JiiDKbQSVvNxWf/A9qfni8OaS83DGzdoDmzPFPfsYlF8SwCgTxnOgrR+PLPuYHd/dnIA7aSNk/BZ9WCAKxmdstVoGW+L3cTtX6lx92zko1lAZ/JsDYDRHMOSnX1jqXnIzf4WPjKFJipztzOM+U1Khm6qIkUJUVTiLtH+9ev590yKnPHTYSeoz5ULdJpCcOdFvRBuRidgtPtxjvsLIA/aEQqZWZlWueq/E2iHhy5LZ87lzd89zTPBN7JGS6qidGPwxlbQ/EhEk2X9cDY1LPiAQ==";
 
+<<<<<<< Updated upstream
+=======
 
-            var restClient = new RestClient("https://maxcvservices.dnb.com/V4.0");
+>>>>>>> Stashed changes
+            var restClient = new RestClient("https://maxcvservices.dnb.com/V6.0");
             var restRequest = new RestRequest();
-            //switch (request.Filter)
-            //{
-            //    case "company":
-            //        restRequest.Method = Method.GET;
-            //        restRequest.Resource = String.Format("/organizations?findcompany=true&KeywordText={0}&SearchModeDescription=Basic", request.SearchTerms);
-            //        break;
-            //    case "contact":
-            //        restRequest.Method = Method.GET;
-            //        restRequest.Resource = String.Format("/organizations?findcontact=true&KeywordText={0}&KeywordContactText={1}&SearchModeDescription=Basic", request.SearchTerms.Split('~')[0], request.SearchTerms.Split('~')[1]);
-            //        break;
-            //    case "competitors":
-            //        restRequest.Method = Method.GET;
-            //        restRequest.Resource = String.Format("/organizations/{0}/competitors", request.SearchTerms);
+            switch (request.SearchTerms)
+	        {
+                case "company":
+                    restRequest.Method = Method.GET;
+                    restRequest.Resource = String.Format("/organizations?findcompany=true&KeywordText={0}&SearchModeDescription=Basic", request.SearchTerms);
+                    break;
+                case "contact":
+                    restRequest.Method = Method.GET;
+                    restRequest.Resource = String.Format("/organizations?findcontact=true&KeywordText={0}&KeywordContactText={1}&SearchModeDescription=Basic", request.SearchTerms.Split('~')[0], request.SearchTerms.Split('~')[1]);
+                    break;
+                case "competitors":
+                    restRequest.Method = Method.GET;
+                    restRequest.Resource = String.Format("/organizations/{0}/competitors", request.SearchTerms);
 
-            //        break;
-            //    //case "industry":
-            //    //    restUrl = "/organizations?findcompany";
-            //        //= 
-            //    //    break;
-            //    default:
-            //        throw new Exception(request.Filter + " is not a vaild company type.");
-            //}
+                    break;
+                //case "industry":
+                //    restUrl = "/organizations?findcompany";
+                    //= 
+                //    break;
+		        default:
+                    throw new Exception(request.SearchTerms + " is not a vaild entity type.");
+	        }
+<<<<<<< Updated upstream
+
+=======
+>>>>>>> Stashed changes
             restRequest.AddHeader("Authorization", request.AuthToken);
             var response = restClient.Execute(restRequest);
             if (response.StatusCode != System.Net.HttpStatusCode.OK)
