@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Hackathon.Rest.Endpoints
 {
-    [Route("/dnb/company/{filter}/{searchTerms}", "GET")]
+    [Route("/dnb/company/fraudscore/{searchTerms*}", "GET")]
     public class DnbCompanyRequest
     {
         public string AuthToken { get; set; }
@@ -27,6 +27,8 @@ namespace Hackathon.Rest.Endpoints
         public int? InternationDialingCode { get; set; }
         public string CustomerReferenceText { get; set; }
         public string CustomerBillingEndorcementText { get; set; }
+
+        public string SearchTerms { get; set; }
 
     }
 }
