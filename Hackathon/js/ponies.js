@@ -88,27 +88,40 @@ function dunsLinkClick(e) {
     initializeGraphPage();
 }
 
-function GetMiserableSample() {
-    return $.ajax({
-        url: "/miserable",
-        type: "GET",
-        dataType: "json"
-    });
-}
-
-
-
-
-
-
-
-
 
 function name(d) { return d.name; }
 function group(d) { return d.group; }
 
 var color = d3.scale.category10();
-function colorByGroup(d) { return color(group(d)); }
+function colorByGroup(d) {
+    switch (d.group) {
+        case 1:
+            return "#ff0000";
+        case 2:
+            return "#00ff00";
+        case 3:
+            return "#0000ff";
+        default:
+            return "#00ff00";
+    }
+}
+function getSize(d) {
+    switch(d.size)
+    {
+        case 1:
+            return 20;
+        case 2:
+            return 25;
+        case 3:
+            return 30;
+        case 4:
+            return 35;
+        case 5:
+            return 40;
+        default:
+            return 40;
+    }
+}
 
 var width = 1260,
     height = 800;
@@ -141,9 +154,9 @@ function recenterVoronoi(nodes) {
 }
 
 var force = d3.layout.force()
-    .charge(-2000)
+    .charge(-3000)
     .friction(0.3)
-    .linkDistance(50)
+    .linkDistance(120)
     .size([width, height]);
 
 
@@ -177,8 +190,6 @@ var mouseOverEventHandler = function (event) {
     //alert('bam');
     var x = 5;
 }
-
-
 
 function initializeGraphPage() {
 
@@ -215,7 +226,7 @@ function initializeGraphPage() {
 
         //  breast
         node.append('circle')
-            .attr('r', 40)
+            .attr('r', getSize)
             .attr('fill', colorByGroup)
             .attr('fill-opacity', 0.9)
             .attr('onmouseover', 'mouseOverEventHandler(this)');
@@ -229,5 +240,13 @@ function initializeGraphPage() {
             .nodes(data.nodes)
             .links(data.links)
             .start();
+
+
+        $('.node').popover({
+            content: "This is a test.",
+            trigger: "hover",
+            container: $("#viz")
+        });
+
     });
 }
