@@ -13,27 +13,40 @@ namespace Hackathon.Rest.Services
     {
         public object Get(MiserableSampleRequest request)
         {
+            // name = company name
+            // group = node color (1=r, 2=g, 3=b)
+            // size = node size [1|2|3|4|5]
+            // value = line width in pixels
+            System.Threading.Thread.Sleep(2000);
+
             return @"{
   ""nodes"":[
-    {""name"":""Myriel"",""group"":1},
-    {""name"":""Napoleon"",""group"":1},
-    {""name"":""Mlle.Baptistine"",""group"":1},
-    {""name"":""Mme.Magloire"",""group"":1},
-    {""name"":""CountessdeLo"",""group"":1},
-    {""name"":""Geborand"",""group"":1},
-    {""name"":""Champtercier"",""group"":1},
-    {""name"":""Cravatte"",""group"":1},
-    {""name"":""Count"",""group"":1},
-    {""name"":""OldMan"",""group"":1},
-    {""name"":""Labarre"",""group"":2},
-    {""name"":""Valjean"",""group"":2},
-    {""name"":""Marguerite"",""group"":3},
-    {""name"":""Mme.deR"",""group"":2},
-    {""name"":""Isabeau"",""group"":2},
-    {""name"":""Gervais"",""group"":2},
-    {""name"":""Tholomyes"",""group"":3},
-    {""name"":""Listolier"",""group"":3},
-    {""name"":""Fameuil"",""group"":3}
+    {""name"":""Apple, Inc."",""group"":1,""size"":1},
+    {""name"":""Napoleon"",""group"":2,""size"":3},
+    {""name"":""Mlle.Baptistine"",""group"":3,""size"":1},
+    {""name"":""Mme.Magloire"",""group"":2,""size"":5},
+    {""name"":""CountessdeLo"",""group"":2,""size"":1},
+    {""name"":""Geborand"",""group"":2,""size"":1},
+    {""name"":""Champtercier"",""group"":2,""size"":1},
+    {""name"":""Cravatte"",""group"":2,""size"":1},
+    {""name"":""Count"",""group"":2,""size"":4},
+    {""name"":""OldMan"",""group"":1,""size"":1},
+    {""name"":""Labarre"",""group"":1,""size"":1},
+    {""name"":""Valjean"",""group"":1,""size"":1},
+    {""name"":""Marguerite"",""group"":2,""size"":1},
+    {""name"":""Mme.deR"",""group"":2,""size"":1},
+    {""name"":""Isabeau"",""group"":2,""size"":1},
+    {""name"":""Gervais"",""group"":2,""size"":2},
+    {""name"":""Tholomyes"",""group"":2,""size"":1},
+    {""name"":""Listolier"",""group"":2,""size"":1},
+    {""name"":""Fameuil"",""group"":2,""size"":1},
+    {""name"":""Ken"",""group"":2,""size"":3},
+    {""name"":""Mark"",""group"":2,""size"":1},
+    {""name"":""Max"",""group"":2,""size"":1},
+    {""name"":""Josh"",""group"":2,""size"":5},
+    {""name"":""Josh"",""group"":2,""size"":1},
+    {""name"":""Josh"",""group"":2,""size"":1},
+    {""name"":""Josh"",""group"":2,""size"":1}
   ],
   ""links"":[
     {""source"":1,""target"":0,""value"":1},
@@ -56,7 +69,11 @@ namespace Hackathon.Rest.Services
     {""source"":15,""target"":11,""value"":1},
     {""source"":17,""target"":16,""value"":4},
     {""source"":18,""target"":16,""value"":4},
-    {""source"":18,""target"":17,""value"":4}
+    {""source"":18,""target"":17,""value"":4},
+    {""source"":19,""target"":17,""value"":4},
+    {""source"":20,""target"":17,""value"":4},
+    {""source"":21,""target"":17,""value"":4},
+    {""source"":22,""target"":17,""value"":4}
   ]
 }";
         }
