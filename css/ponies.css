@@ -12,3 +12,32 @@
 #loading img {
     content:url(/images/ajax-loader.gif);
 }
+
+#searchbox {
+    display:inline-block; 
+    width:75%;
+}
+
+#searchform {
+    text-align: center;
+}
+
+#searchspinner {
+    content:url(/images/searchspinner.gif);
+}
+
+
+/* D3 */
+.node {
+  opacity: 0.6;
+}
+
+.node:hover {
+  opacity: 1;
+}
+
+.link {
+  stroke: #994C0B;
+  stroke-opacity: 0.9;
+  stroke-linecap: round;
+}
