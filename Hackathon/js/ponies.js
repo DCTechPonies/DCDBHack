@@ -92,6 +92,17 @@ function dunsLinkClick(e) {
 function name(d) { return d.name; }
 function group(d) { return d.group; }
 
+function getprincipals(d) { return d.principals }
+function getviability(d) { return d.viability }
+function getjsl(d) { return d.jsl }
+
+function getcontent(d) {
+    return "<div><b>Principals:</b> " + d.principals + "</div>" +
+           "<div><b>Viability:</b> " + d.viability + "</div>" +
+           "<div><b>JSL:</b> " + d.jsl + "</div>";
+}
+
+
 var color = d3.scale.category10();
 function colorByGroup(d) {
     switch (d.group) {
@@ -221,6 +232,10 @@ function initializeGraphPage() {
           .enter().append('g')
             .attr('title', name)
             .attr('class', 'node')
+            //.attr('principals', getprincipals)
+            //.attr('viability', getviability)
+            //.attr('jsl', getjsl)
+            .attr('data-content', getcontent)
             .call(force.drag)
 
 
@@ -243,10 +258,16 @@ function initializeGraphPage() {
 
 
         $('.node').popover({
-            content: "This is a test.",
+            //content: getTooltipContent(),
+            html: true,
             trigger: "hover",
             container: $("#viz")
         });
 
     });
+
+
+    function getTooltipContent() {
+        return;
+    }
 }
