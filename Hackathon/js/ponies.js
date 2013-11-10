@@ -84,19 +84,8 @@ function doSearch() {
 
 function dunsLinkClick(e) {
     e.preventDefault();
-    //var selectedDuns = $(e.target).attr('href');
 
-    $('#content').html('<div id="loading"><img /></div>');
-    $.when(GetMiserableSample()).then(
-        function (data, textStatus, jqXHR) {
-            initializeGraphPage();
-        },
-        function (jqXHR, textStatus, errorThrown) {
-            $('#content').html("Miserable Sample Failure");
-        }
-    );
-
-    //$('<div>' + selectedDuns + '</div>').appendTo($('#content'));
+    initializeGraphPage();
 }
 
 function GetMiserableSample() {
@@ -193,13 +182,17 @@ var mouseOverEventHandler = function (event) {
 
 function initializeGraphPage() {
 
-    $('#content').html("<div id='viz'></div>");
+    // add loading graphic AND graphics container
+    $('#content').html("<div id='loading'><img /></div><div id='viz'></div>");
     svg = d3.select('#viz')
             .append('svg')
             .attr('width', width)
             .attr('height', height);
     registerTick();
     d3.json('/miserable', function (err, data) {
+
+        // remove loading
+        $('#loading').remove();
 
         data.nodes.forEach(function (d, i) {
             d.id = i;

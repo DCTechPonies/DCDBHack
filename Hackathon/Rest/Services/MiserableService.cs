@@ -13,6 +13,8 @@ namespace Hackathon.Rest.Services
     {
         public object Get(MiserableSampleRequest request)
         {
+            System.Threading.Thread.Sleep(2000);
+
             return @"{
   ""nodes"":[
     {""name"":""Myriel"",""group"":1},
