@@ -92,6 +92,20 @@ function dunsLinkClick(e) {
 function name(d) { return d.name; }
 function group(d) { return d.group; }
 
+<<<<<<< Updated upstream
+=======
+function getprincipals(d) { return d.principals }
+function getviability(d) { return d.viability }
+function getjsl(d) { return d.jsl }
+
+function getcontent(d) {
+    return "<div><b>Principals:</b> " + d.principals + "</div>" +
+           "<div><b>Viability:</b> " + d.viability + "</div>" +
+           "<div><b>JSL:</b> " + d.jsl + "</div>";
+}
+
+
+>>>>>>> Stashed changes
 var color = d3.scale.category10();
 function colorByGroup(d) {
     switch (d.group) {
@@ -109,6 +123,7 @@ function getSize(d) {
     switch(d.size)
     {
         case 1:
+<<<<<<< Updated upstream
             return 20;
         case 2:
             return 25;
@@ -118,6 +133,17 @@ function getSize(d) {
             return 35;
         case 5:
             return 40;
+=======
+            return 25;
+        case 2:
+            return 30;
+        case 3:
+            return 35;
+        case 4:
+            return 40;
+        case 5:
+            return 45;
+>>>>>>> Stashed changes
         default:
             return 40;
     }
@@ -154,9 +180,15 @@ function recenterVoronoi(nodes) {
 }
 
 var force = d3.layout.force()
+<<<<<<< Updated upstream
     .charge(-3000)
     .friction(0.3)
     .linkDistance(120)
+=======
+    .charge(-3900)
+    .friction(0.3)
+    .linkDistance(150)
+>>>>>>> Stashed changes
     .size([width, height]);
 
 
@@ -200,7 +232,11 @@ function initializeGraphPage() {
             .attr('width', width)
             .attr('height', height);
     registerTick();
+<<<<<<< Updated upstream
     d3.json('/miserable', function (err, data) {
+=======
+    d3.json('/final', function (err, data) {
+>>>>>>> Stashed changes
 
         // remove loading
         $('#loading').remove();
@@ -221,6 +257,13 @@ function initializeGraphPage() {
           .enter().append('g')
             .attr('title', name)
             .attr('class', 'node')
+<<<<<<< Updated upstream
+=======
+            //.attr('principals', getprincipals)
+            //.attr('viability', getviability)
+            //.attr('jsl', getjsl)
+            .attr('data-content', getcontent)
+>>>>>>> Stashed changes
             .call(force.drag)
 
 
@@ -243,10 +286,23 @@ function initializeGraphPage() {
 
 
         $('.node').popover({
+<<<<<<< Updated upstream
             content: "This is a test.",
+=======
+            //content: getTooltipContent(),
+            html: true,
+>>>>>>> Stashed changes
             trigger: "hover",
             container: $("#viz")
         });
 
     });
+<<<<<<< Updated upstream
+=======
+
+
+    function getTooltipContent() {
+        return;
+    }
+>>>>>>> Stashed changes
 }
