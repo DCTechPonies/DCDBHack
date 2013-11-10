@@ -18,27 +18,44 @@ namespace Hackathon.Rest.Services
             //Prod
             request._AuthToken = (string)Session["AuthToken"];
 
-            var restClient = new RestClient("https://maxcvservices.dnb.com/dataexchange/fliptop");
+            var restClient = new RestClient("https://maxcvservices.dnb.com/V3.0/organizations");
             var restRequest = new RestRequest();
 
             switch (request.Filter)
             {
-                case "company":
+                case "suits":
                     restRequest.Method = Method.GET;
-                    restRequest.Resource = String.Format("/beta/company?duns={0}", request._SearchTerms);
+                    restRequest.Resource = String.Format("/{0}/products/PUBREC_SUITS", request._SearchTerms);
                     break;
-                case "person":
+                case "liens":
                     restRequest.Method = Method.GET;
-                    restRequest.Resource = String.Format("/beta/person?email={0}&format=JSON", request._SearchTerms);
+                    restRequest.Resource = String.Format("/{0}/products/PUBREC_LIENS", request._SearchTerms);
+                    break;
+                case "judgments":
+                    restRequest.Method = Method.GET;
+                    restRequest.Resource = String.Format("/{0}/products/PUBREC_JDG", request._SearchTerms);
+                    break;
+                case "uccfilings":
+                    restRequest.Method = Method.GET;
+                    restRequest.Resource = String.Format("/{0}/products/PUBREC_UCC", request._SearchTerms);
+                    break;
+                case "businessregistration":
+                    restRequest.Method = Method.GET;
+                    restRequest.Resource = String.Format("/{0}/products/PUBREC_BR", request._SearchTerms);
+                    break;
+                case "corporateentityownerhip":
+                    restRequest.Method = Method.GET;
+                    restRequest.Resource = String.Format("/{0}/products/PUBREC_OS", request._SearchTerms);
+                    break;
+                case "suitlienjudgementbanckruptcy":
+                    restRequest.Method = Method.GET;
+                    restRequest.Resource = String.Format("/{0}/products/PUBREC_DTLS", request._SearchTerms);
                     break;
                 default:
                     throw new Exception(request.Filter + " is not a vaild type.");
             }
 
-            restRequest.AddHeader("ApplicationTransactionID", request.Filter + "-" + request._SearchTerms);
             restRequest.AddHeader("Authorization", request._AuthToken);
-            restRequest.AddHeader("ArchiveProductOptOutIndicator", "0");
-            restRequest.AddHeader("ExtendArchivePeriodIndicator", "0");
             var response = restClient.Execute(restRequest);
             if (response.StatusCode != System.Net.HttpStatusCode.OK)
             {

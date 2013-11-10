@@ -6,8 +6,8 @@ using System.Web;
 
 namespace Hackathon.Rest.Endpoints
 {
-    [Route("/dnb/social/{filter}/{searchTerms}", "GET")]
-    public class DnbDataExchangeRequest : IGenericRequest
+    [Route("/dnb/publicrecord/{filter}/{searchTerms}", "GET")]
+    public class DnbPublicRecordRequest : IGenericRequest
     {
         public string Filter { get; set; }
     }
