@@ -84,42 +84,44 @@ function doSearch() {
 
 function dunsLinkClick(e) {
     e.preventDefault();
-    //var selectedDuns = $(e.target).attr('href');
 
-    $('#content').html('<div id="loading"><img /></div>');
-    $.when(GetMiserableSample()).then(
-        function (data, textStatus, jqXHR) {
-            initializeGraphPage();
-        },
-        function (jqXHR, textStatus, errorThrown) {
-            $('#content').html("Miserable Sample Failure");
-        }
-    );
-
-    //$('<div>' + selectedDuns + '</div>').appendTo($('#content'));
+    initializeGraphPage();
 }
-
-function GetMiserableSample() {
-    return $.ajax({
-        url: "/miserable",
-        type: "GET",
-        dataType: "json"
-    });
-}
-
-
-
-
-
-
-
 
 
 function name(d) { return d.name; }
 function group(d) { return d.group; }
 
 var color = d3.scale.category10();
-function colorByGroup(d) { return color(group(d)); }
+function colorByGroup(d) {
+    switch (d.group) {
+        case 1:
+            return "#ff0000";
+        case 2:
+            return "#00ff00";
+        case 3:
+            return "#0000ff";
+        default:
+            return "#00ff00";
+    }
+}
+function getSize(d) {
+    switch(d.size)
+    {
+        case 1:
+            return 20;
+        case 2:
+            return 25;
+        case 3:
+            return 30;
+        case 4:
+            return 35;
+        case 5:
+            return 40;
+        default:
+            return 40;
+    }
+}
 
 var width = 1260,
     height = 800;
@@ -152,9 +154,9 @@ function recenterVoronoi(nodes) {
 }
 
 var force = d3.layout.force()
-    .charge(-2000)
+    .charge(-3000)
     .friction(0.3)
-    .linkDistance(50)
+    .linkDistance(120)
     .size([width, height]);
 
 
@@ -189,17 +191,19 @@ var mouseOverEventHandler = function (event) {
     var x = 5;
 }
 
-
-
 function initializeGraphPage() {
 
-    $('#content').html("<div id='viz'></div>");
+    // add loading graphic AND graphics container
+    $('#content').html("<div id='loading'><img /></div><div id='viz'></div>");
     svg = d3.select('#viz')
             .append('svg')
             .attr('width', width)
             .attr('height', height);
     registerTick();
     d3.json('/miserable', function (err, data) {
+
+        // remove loading
+        $('#loading').remove();
 
         data.nodes.forEach(function (d, i) {
             d.id = i;
@@ -222,7 +226,7 @@ function initializeGraphPage() {
 
         //  breast
         node.append('circle')
-            .attr('r', 40)
+            .attr('r', getSize)
             .attr('fill', colorByGroup)
             .attr('fill-opacity', 0.9)
             .attr('onmouseover', 'mouseOverEventHandler(this)');
@@ -236,5 +240,13 @@ function initializeGraphPage() {
             .nodes(data.nodes)
             .links(data.links)
             .start();
+
+
+        $('.node').popover({
+            content: "This is a test.",
+            trigger: "hover",
+            container: $("#viz")
+        });
+
     });
 }
