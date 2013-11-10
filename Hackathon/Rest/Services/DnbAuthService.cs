@@ -28,15 +28,16 @@ namespace Hackathon.Rest.Services
 
             Session["AuthToken"] = authToken;
 
+            if (!String.IsNullOrEmpty(request._SearchTerms))
+            {
+                Response.Redirect(request._SearchTerms);
+            }
             return new DnbAuthDto()
             {
                 User = (string)response.Headers.Single(h => h.Name == "x-dnb-user").Value,
                 Password = (string)response.Headers.Single(h => h.Name == "x-dnb-pwd").Value,
                 AuthToken = authToken
             };
-            
-
-
         }
     }
 

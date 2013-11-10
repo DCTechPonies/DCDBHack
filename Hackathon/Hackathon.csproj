@@ -94,6 +94,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="dashboard.html" />
+    <Content Include="login.html" />
     <Content Include="test.html" />
     <Content Include="css\bootstrap-cosmo.css" />
     <Content Include="css\bootstrap.css" />
@@ -129,6 +131,8 @@
     <Compile Include="App_Start\PageBase.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Rest\Endpoints\ReportRequest.cs" />
+    <Compile Include="Rest\Services\ReportService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rest\Endpoints\DnbTradeDetailRequest.cs" />
     <Compile Include="Rest\Endpoints\DnbAssessmentRequest.cs" />
@@ -171,7 +175,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="templates\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

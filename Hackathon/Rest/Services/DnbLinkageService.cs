@@ -16,7 +16,15 @@ namespace Hackathon.Rest.Services
             //Sandbox
             //request.AuthToken = "OLtSGKF9hEIePfGG45cjgpSSLIAk2cQcTJkc7i8Saw0tTiODz2NAUdyGUsKOsNmIHm5Jw/SsbjoycpFfMyhPoJS2NsIhOFZWYwZsO+3dfXlzlBvoLkAxP020zScurR6wnSKozn6np6rLhpE0ejUVTvG8iKCHywP9dyPgg1vXRX1o1YbX8XMlSpa+VAWhJVAiRRNuMmIlATJLamrhxSTJ1jgydRbdZ80Jm4llCRzOQCb/9CHkyKrt0AgQckb/X6nsR80ydiOqFRavtRLjK3X+qgRX9DRcaHLcWPGRWhWt8MMBt11zijUswuk8Z4UaocY9ZA8nSUWdiebbcpBy0hHxuvDIG4dZByNRBkWc6EYNXHI=";
             //Prod
-            request._AuthToken = (string)Session["AuthToken"];
+            var tok = Session["AuthToken"];
+            if (tok != null)
+            {
+                request._AuthToken = (string)tok;
+            }
+            else
+            {
+                Response.Redirect("/");
+            }
 
             var restClient = new RestClient("https://maxcvservices.dnb.com/V3.1/organizations");
             var restRequest = new RestRequest();
@@ -28,7 +36,7 @@ namespace Hackathon.Rest.Services
             var response = restClient.Execute(restRequest);
             if (response.StatusCode != System.Net.HttpStatusCode.OK)
             {
-                throw new HttpException(500, "D&B Request Failed.");
+                throw new HttpException(500, string.Format("D&B Request Failed: {0}",response.Content));
             }
             //var responseObject = JsonConvert.DeserializeObject<Rootobject>(response.Content);
             return response.Content;
