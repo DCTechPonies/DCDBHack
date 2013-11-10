@@ -13,10 +13,13 @@ namespace Hackathon.Rest.Services
     {
         public object Get(MiserableSampleRequest request)
         {
-            // name = company name
-            // group = node color [1=r, 2=g, 3=b]
-            // size = node size [1|2|3|4|5]
-            // value = line width in pixels
+            // name = company name (string)
+            // group = node color (1=r, 2=g, 3=b)
+            // size = node size (1|2|3|4|5)
+            // principals = csv of principal names (string)
+            // viability = (string)
+            // value = line width in pixels (int,  1 through 10)
+            
             System.Threading.Thread.Sleep(2000);
 
             return @"{
