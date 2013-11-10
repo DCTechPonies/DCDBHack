@@ -39,15 +39,15 @@ namespace Hackathon.Rest.Services
                     restRequest.Method = Method.GET;
                     restRequest.Resource = String.Format("/{0}/products/PUBREC_UCC", request._SearchTerms);
                     break;
-                case "businessregistration":
+                case "bizreg":
                     restRequest.Method = Method.GET;
                     restRequest.Resource = String.Format("/{0}/products/PUBREC_BR", request._SearchTerms);
                     break;
-                case "corporateentityownerhip":
+                case "ceo":
                     restRequest.Method = Method.GET;
                     restRequest.Resource = String.Format("/{0}/products/PUBREC_OS", request._SearchTerms);
                     break;
-                case "suitlienjudgementbanckruptcy":
+                case "sljb":
                     restRequest.Method = Method.GET;
                     restRequest.Resource = String.Format("/{0}/products/PUBREC_DTLS", request._SearchTerms);
                     break;

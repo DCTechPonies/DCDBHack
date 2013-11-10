@@ -94,6 +94,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="test.html" />
     <Content Include="css\bootstrap-cosmo.css" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\jquery.dataTables.css" />

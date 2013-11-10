@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Test Page</title>
+		<link rel="stylesheet" href="css/bootstrap-cosmo.css" />
+	</head>
+	<body>
+		<div class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">Fraud Finder</a>
+				</div>
+				<div class="collapse navbar-collapse">
+					<!--<ul class="nav navbar-nav">
+						<li class="active"><a href="#">Home</a></li>
+						<li><a href="#about">About</a></li>
+						<li><a href="#contact">Contact</a></li>
+					</ul>-->
+				</div><!--/.nav-collapse -->
+			</div>
+		</div>
+
+		<div id="content" class="container">
+            <span>
+                <div>
+            <label>Company</label></div>
+            <a class="btn btn-default" href="dnb/company/fraudscore/TerritoryName=CA&CountryISOAlpha2Code=US&StreetAddressLine=492%20KOLLER%20STREET&PrimaryTownName=SAN%20FRANCISCO&SubjectName=Depot" role="button">/dnb/company/fraudscore/{_searchTerms*}</a><br />
+                </span>
+            <span>
+            <div><label>Social</label></div>
+            <a class="btn btn-default" href="/dnb/social/company/072271711" role="button">/dnb/social/company/{duns}</a><br />
+            <a class="btn btn-default" href="/dnb/social/person/tcook@apple.com" role="button">/dnb/social/person/{email_address}</a><br />
+                </span><span>
+            <div><label>Firmographic</label></div>
+            <a class="btn btn-default" href="/dnb/firmographic/072271711" role="button">/dnb/firmographic/{duns}</a><br />
+            </span><span>
+            <div><label>Financial</label></div>
+            <a class="btn btn-default" href="/dnb/financial/072271711" role="button">/dnb/financial/{duns}</a><br />
+        </span><span>
+            <div><label>Assessment</label></div>
+            <a class="btn btn-default" href="/dnb/assessment/smallbizrisk/" role="button">/dnb/assessment/smallbizrisk/{duns}</a><br />
+            <a class="btn btn-default" href="/dnb/assessment/fss/072271711" role="button">/dnb/assessment/fss/{duns}</a><br />
+            <a class="btn btn-default" href="/dnb/assessment/ccs/072271711" role="button">/dnb/assessment/ccs/{duns}</a><br />
+            <a class="btn btn-default" href="/dnb/assessment/ratingtrend/072271711" role="button">/dnb/assessment/ratingtrend/{duns}</a><br />
+            <a class="btn btn-default" href="/dnb/assessment/pbrstandard/072271711" role="button">/dnb/assessment/pbrstandard/{duns}</a><br />
+            <a class="btn btn-default" href="/dnb/assessment/pbrenhanced/072271711" role="button">/dnb/assessment/pbrenhanced/{duns}</a><br />
+            <a class="btn btn-default" href="/dnb/assessment/emma/072271711" role="button">/dnb/assessment/emma/{duns}</a><br />
+            <a class="btn btn-default" href="/dnb/assessment/ser/072271711" role="button">/dnb/assessment/ser/{duns}</a><br />
+            <a class="btn btn-default" href="/dnb/assessment/tlp/072271711" role="button">/dnb/assessment/tlp/{duns}</a><br />
+            <a class="btn btn-default" href="/dnb/assessment/viability/072271711" role="button">/dnb/assessment/viability/{duns}</a><br />
+        </span><span>
+            <div><label>Linkage</label></div>
+            <a class="btn btn-default" href="/dnb/linkage/072271711" role="button">/dnb/linkage/{duns}</a><br />
+        </span><span>
+            <div><label>Public Record</label></div>
+            <a class="btn btn-default" href="/dnb/publicrecord/suits/072271711" role="button">/dnb/publicrecord/suits/{duns}</a><br />
+            <a class="btn btn-default" href="/dnb/publicrecord/liens/072271711" role="button">/dnb/publicrecord/liens/{duns}</a><br />
+            <a class="btn btn-default" href="/dnb/publicrecord/judgments/072271711" role="button">/dnb/publicrecord/judgments/{duns}</a><br />
+            <a class="btn btn-default" href="/dnb/publicrecord/uccfilings/072271711" role="button">/dnb/publicrecord/uccfilings/{duns}</a><br />
+            <a class="btn btn-default" href="/dnb/publicrecord/bizreg/072271711" role="button">/dnb/publicrecord/bizreg/{duns}</a><br />
+            <a class="btn btn-default" href="/dnb/publicrecord/ceo/072271711" role="button">/dnb/publicrecord/ceo/{duns}</a><br />
+            <a class="btn btn-default" href="/dnb/publicrecord/sljb/072271711" role="button">/dnb/publicrecord/sljb/{duns}</a><br />
+        </span><span>
+            <div><label>Entity</label></div>
+            <a class="btn btn-default" href="/dnb/entity/company/home%20depot" role="button">/dnb/entity/company/{_searchTerms}</a><br />
+            <a class="btn btn-default" href="/dnb/entity/contact/home%20depot~fred" role="button">/dnb/entity/contact/{_searchTerms}</a><br />
+            <a class="btn btn-default" href="/dnb/entity/competitors/072271711" role="button">/dnb/entity/competitors/{_searchTerms}</a><br />
+</span>
+		</div><!-- /.container -->
+		
+		<script type="text/javascript" src="js/jquery-2.0.3.js"></script>
+		<script type="text/javascript" src="js/bootstrap.js"></script>
+	</body>
+</html>
