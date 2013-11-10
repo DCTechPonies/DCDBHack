@@ -129,6 +129,7 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rest\Endpoints\DnbLinkageRequest.cs" />
     <Compile Include="Rest\Endpoints\DnbFinancialRequest.cs" />
     <Compile Include="Rest\Endpoints\DnbPublicRecordRequest.cs" />
     <Compile Include="Rest\Endpoints\IGenericRequest.cs" />
@@ -139,6 +140,7 @@
     <Compile Include="Rest\Endpoints\DnbEntityListRequest.cs" />
     <Compile Include="Rest\Endpoints\DnbSampleRequest.cs" />
     <Compile Include="Rest\Endpoints\DnbAuthRequest.cs" />
+    <Compile Include="Rest\Services\DnbLinkageService.cs" />
     <Compile Include="Rest\Services\DnbFinancialService.cs" />
     <Compile Include="Rest\Services\DnbPublicRecordService.cs" />
     <Compile Include="Rest\Services\GenericService.cs" />
