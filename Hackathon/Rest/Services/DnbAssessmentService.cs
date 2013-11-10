@@ -27,34 +27,34 @@ namespace Hackathon.Rest.Services
             switch (request.Filter.ToLower())
             {
                 case "smallbizrisk": //small business risk
-                    requestURL = String.Format("/organizations/{0}/products/SBCRP?ArchiveProductOptOutIndicator=1&TradeUpIndicator=0", request._SearchTerms);
+                    requestURL = String.Format("/organizations/{0}/products/SBCRP?ArchiveProductOptOutIndicator=1&TradeUpIndicator=0", request.DUNS);
                     break;
                 case "fss": //financial stress score
-                    requestURL = String.Format("/organizations/{0}/products/PBR_FSS_V7.1?ArchiveProductOptOutIndicator=1&TradeUpIndicator=0", request._SearchTerms);
+                    requestURL = String.Format("/organizations/{0}/products/PBR_FSS_V7.1?ArchiveProductOptOutIndicator=1&TradeUpIndicator=0", request.DUNS);
                     break;
                 case "ccs": //company credit score
-                    requestURL = String.Format("/organizations/{0}/products/PPR_CCS_V9?ArchiveProductOptOutIndicator=1&TradeUpIndicator=0", request._SearchTerms);
+                    requestURL = String.Format("/organizations/{0}/products/PPR_CCS_V9?ArchiveProductOptOutIndicator=1&TradeUpIndicator=0", request.DUNS);
                     break;
                 case "ratingtrend": //ratings and trends
-                    requestURL = String.Format("/organizations/{0}/products/RTNG_TRND?ArchiveProductOptOutIndicator=1&TradeUpIndicator=0", request._SearchTerms);
+                    requestURL = String.Format("/organizations/{0}/products/RTNG_TRND?ArchiveProductOptOutIndicator=1&TradeUpIndicator=0", request.DUNS);
                     break;
                 case "pbrstandard": //Predictive Bancrupty standard
-                    requestURL = String.Format("/organizations/{0}/products/PBPR_STD?ArchiveProductOptOutIndicator=1&TradeUpIndicator=0", request._SearchTerms);
+                    requestURL = String.Format("/organizations/{0}/products/PBPR_STD?ArchiveProductOptOutIndicator=1&TradeUpIndicator=0", request.DUNS);
                     break;
                 case "pbrenhanced": //Predictive Bankruptcy Enhanced
-                    requestURL = String.Format("/organizations/{0}/products/PBPR_ENH?ArchiveProductOptOutIndicator=1&TradeUpIndicator=0", request._SearchTerms);
+                    requestURL = String.Format("/organizations/{0}/products/PBPR_ENH?ArchiveProductOptOutIndicator=1&TradeUpIndicator=0", request.DUNS);
                     break;
                 case "emma": //emerging markets
-                    requestURL = String.Format("/organizations/{0}/products/PGPR_EMMA?ArchiveProductOptOutIndicator=1&TradeUpIndicator=0", request._SearchTerms);
+                    requestURL = String.Format("/organizations/{0}/products/PGPR_EMMA?ArchiveProductOptOutIndicator=1&TradeUpIndicator=0", request.DUNS);
                     break;
                 case "ser": //supplier risk
-                    requestURL = String.Format("/organizations/{0}/products/SER?ArchiveProductOptOutIndicator=1&TradeUpIndicator=0", request._SearchTerms);
+                    requestURL = String.Format("/organizations/{0}/products/SER?ArchiveProductOptOutIndicator=1&TradeUpIndicator=0", request.DUNS);
                     break;
                 case "tlp": //total loss predictor
-                    requestURL = String.Format("/organizations/{0}/products/TLP?ArchiveProductOptOutIndicator=1&TradeUpIndicator=0", request._SearchTerms);
+                    requestURL = String.Format("/organizations/{0}/products/TLP?ArchiveProductOptOutIndicator=1&TradeUpIndicator=0", request.DUNS);
                     break;
                 case "viability": //viability
-                    requestURL = String.Format("/organizations/{0}/products/VIAB_RAT?ArchiveProductOptOutIndicator=1&TradeUpIndicator=0", request._SearchTerms);
+                    requestURL = String.Format("/organizations/{0}/products/VIAB_RAT?ArchiveProductOptOutIndicator=1&TradeUpIndicator=1", request.DUNS);
                     break;
                 default:
                 break;
