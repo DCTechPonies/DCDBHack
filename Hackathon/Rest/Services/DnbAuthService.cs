@@ -25,6 +25,13 @@ namespace Hackathon.Rest.Services
                 authToken = (string)response.Headers.Single(h => h.Name == "Authorization").Value;
                 //throw new HttpException(500, "D&B Authentication Failed.");
             }
+
+            Session["AuthToken"] = authToken;
+
+            if (!String.IsNullOrEmpty(request._SearchTerms))
+            {
+                Response.Redirect(request._SearchTerms);
+            }
             return new DnbAuthDto()
             {
                 User = (string)response.Headers.Single(h => h.Name == "x-dnb-user").Value,

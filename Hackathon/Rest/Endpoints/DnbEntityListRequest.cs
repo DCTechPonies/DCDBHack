@@ -6,15 +6,12 @@ using System.Web;
 
 namespace Hackathon.Rest.Endpoints
 {
-    [Route("/dnb/entity/{filter}/{searchTerms}", "GET")]
-    public class DnbEntityListRequest
+    [Route("/dnb/entity/{filter}/{_searchTerms}", "GET")]
+    public class DnbEntityListRequest : IGenericRequest
     {
-        public string AuthToken { get; set; }
-        
         /// <summary>
         /// [company|contact|competitors|industry]
         /// </summary>
-        public string Filter { get; set; }
-        public string SearchTerms { get; set; }
+        public string Filter { get; set; }   
     }
 }

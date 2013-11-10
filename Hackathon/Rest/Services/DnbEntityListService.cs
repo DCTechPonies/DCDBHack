@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 
 namespace Hackathon.Rest.Services
 {
-    public class DnbEntityListService : Service
+    public class DnbEntityListService : GenericService<DnbEntityListRequest>
     {
         public object Get(DnbEntityListRequest request)
         {
@@ -17,7 +17,15 @@ namespace Hackathon.Rest.Services
             //request.AuthToken = "OLtSGKF9hEIePfGG45cjgpSSLIAk2cQcTJkc7i8Saw0tTiODz2NAUdyGUsKOsNmIHm5Jw/SsbjoycpFfMyhPoJS2NsIhOFZWYwZsO+3dfXlzlBvoLkAxP020zScurR6wnSKozn6np6rLhpE0ejUVTvG8iKCHywP9dyPgg1vXRX1o1YbX8XMlSpa+VAWhJVAiRRNuMmIlATJLamrhxSTJ1jgydRbdZ80Jm4llCRzOQCb/9CHkyKrt0AgQckb/X6nsR80ydiOqFRavtRLjK3X+qgRX9DRcaHLcWPGRWhWt8MMBt11zijUswuk8Z4UaocY9ZA8nSUWdiebbcpBy0hHxuvDIG4dZByNRBkWc6EYNXHI=";
             //Prod
             //request.AuthToken = "AsAFLo/h3hh3qyjaLwzpYv3usddOE6XqGM7sDWV+/mbJeduCr1TnkX0QA/x/MEAE8JiiDKbQSVvNxWf/A9qfni8OaS83DGzdoDmzPFPfsYlF8SwCgTxnOgrR+PLPuYHd/dnIA7aSNk/BZ9WCAKxmdstVoGW+L3cTtX6lx92zko1lAZ/JsDYDRHMOSnX1jqXnIzf4WPjKFJipztzOM+U1Khm6qIkUJUVTiLtH+9ev590yKnPHTYSeoz5ULdJpCcOdFvRBuRidgtPtxjvsLIA/aEQqZWZlWueq/E2iHhy5LZ87lzd89zTPBN7JGS6qidGPwxlbQ/EhEk2X9cDY1LPiAQ==";
-
+            var tok = Session["AuthToken"];
+            if (tok != null)
+            {
+                request._AuthToken = (string)tok;
+            }
+            else
+            {
+                Response.Redirect("/");
+            }
 
             var restClient = new RestClient("https://maxcvservices.dnb.com/V6.0");
             var restRequest = new RestRequest();
@@ -25,15 +33,15 @@ namespace Hackathon.Rest.Services
 	        {
                 case "company":
                     restRequest.Method = Method.GET;
-                    restRequest.Resource = String.Format("/organizations?findcompany=true&KeywordText={0}&SearchModeDescription=Basic", request.SearchTerms);
+                    restRequest.Resource = String.Format("/organizations?findcompany=true&KeywordText={0}&SearchModeDescription=Basic", request._SearchTerms);
                     break;
                 case "contact":
                     restRequest.Method = Method.GET;
-                    restRequest.Resource = String.Format("/organizations?findcontact=true&KeywordText={0}&KeywordContactText={1}&SearchModeDescription=Basic", request.SearchTerms.Split('~')[0], request.SearchTerms.Split('~')[1]);
+                    restRequest.Resource = String.Format("/organizations?findcontact=true&KeywordText={0}&KeywordContactText={1}&SearchModeDescription=Basic", request._SearchTerms.Split('~')[0], request._SearchTerms.Split('~')[1]);
                     break;
                 case "competitors":
                     restRequest.Method = Method.GET;
-                    restRequest.Resource = String.Format("/organizations/{0}/competitors", request.SearchTerms);
+                    restRequest.Resource = String.Format("/organizations/{0}/competitors", request._SearchTerms);
 
                     break;
                 //case "industry":
@@ -43,12 +51,12 @@ namespace Hackathon.Rest.Services
 		        default:
                     throw new Exception(request.Filter + " is not a vaild entity type.");
 	        }
-            restRequest.AddHeader("Authorization", request.AuthToken);
+            restRequest.AddHeader("Authorization", request._AuthToken);
             var response = restClient.Execute(restRequest);
             if (response.StatusCode != System.Net.HttpStatusCode.OK &&
                 (response.StatusCode != System.Net.HttpStatusCode.NotFound))
             {
-                throw new HttpException(500, "D&B Request Failed.");
+                throw new HttpException(500, string.Format("D&B Request Failed: {0}",response.Content));
             }
             //var responseObject = JsonConvert.DeserializeObject<Rootobject>(response.Content);
             return response.Content;

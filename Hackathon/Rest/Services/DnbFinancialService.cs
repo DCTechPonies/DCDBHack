@@ -9,11 +9,10 @@ using Newtonsoft.Json;
 
 namespace Hackathon.Rest.Services
 {
-    public class DnbCompanyService : GenericService<DnbCompanyRequest>
+    public class DnbFinancialService : GenericService<DnbFinancialRequest>
     {
-        public object Get(DnbCompanyRequest request)
+        public object Get(DnbFinancialRequest request)
         {
-            
             //Sandbox
             //request.AuthToken = "OLtSGKF9hEIePfGG45cjgpSSLIAk2cQcTJkc7i8Saw0tTiODz2NAUdyGUsKOsNmIHm5Jw/SsbjoycpFfMyhPoJS2NsIhOFZWYwZsO+3dfXlzlBvoLkAxP020zScurR6wnSKozn6np6rLhpE0ejUVTvG8iKCHywP9dyPgg1vXRX1o1YbX8XMlSpa+VAWhJVAiRRNuMmIlATJLamrhxSTJ1jgydRbdZ80Jm4llCRzOQCb/9CHkyKrt0AgQckb/X6nsR80ydiOqFRavtRLjK3X+qgRX9DRcaHLcWPGRWhWt8MMBt11zijUswuk8Z4UaocY9ZA8nSUWdiebbcpBy0hHxuvDIG4dZByNRBkWc6EYNXHI=";
             //Prod
@@ -26,14 +25,12 @@ namespace Hackathon.Rest.Services
             {
                 Response.Redirect("/");
             }
-            
-            PopulateParameters(request);
 
-            var restClient = new RestClient("https://maxcvservices.dnb.com/V4.0");
+            var restClient = new RestClient("https://maxcvservices.dnb.com/V3.0");
             var restRequest = new RestRequest();
-
             restRequest.Method = Method.GET;
-            restRequest.Resource = String.Format("/organizations?fraudscore=true{0}", BuildParameterURL(request));
+            //FIN_ST_PLUS is for the financial statement.
+            restRequest.Resource = String.Format("/organizations/{0}/products/FIN_HGLT?ArchiveProductOptOutIndicator=1&TradeUpIndicator=0", request._SearchTerms);
 
             restRequest.AddHeader("Authorization", request._AuthToken);
             var response = restClient.Execute(restRequest);
@@ -44,6 +41,8 @@ namespace Hackathon.Rest.Services
             //var responseObject = JsonConvert.DeserializeObject<Rootobject>(response.Content);
             return response.Content;
         }
+
+
 
 
 

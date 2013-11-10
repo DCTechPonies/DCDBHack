@@ -6,8 +6,8 @@ using System.Web;
 
 namespace Hackathon.Rest.Endpoints
 {
-    [Route("/dnb/auth", "POST")]
-    public class DnbAuthRequest
+    [Route("/dnb/auth/{_searchTerms*}", "POST")]
+    public class DnbAuthRequest : IGenericRequest
     {
     }
 }
